@@ -4,8 +4,9 @@ import { AuthService } from '../services';
 import { View } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 
-
 class AuthenticatedScene extends Component {
+
+
     authCheck() {
         var self = this;
         let loginRedirect = StackActions.reset({
@@ -40,7 +41,9 @@ class AuthenticatedScene extends Component {
         this.authCheck();
 
         return (
-            <View>{this.props.children}</View>
+            <View>
+                {this.props.children}
+            </View>
         )
     }
 }

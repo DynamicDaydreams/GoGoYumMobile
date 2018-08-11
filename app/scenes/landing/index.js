@@ -1,8 +1,17 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 import AuthenticatedScene from '../../components/authenticatedScene';
 
+const styles = {
+    login: {
+        color: 'blue',
+        fontWeight: 'bold',
+        fontSize: 30,
+    }
+}
 class LandingScene extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +20,7 @@ class LandingScene extends Component {
     render() {
         return (
             <AuthenticatedScene {...this.props}>
-                <Text>Landing</Text>
+                <Text style={styles.login}>Landing</Text>
             </AuthenticatedScene>
         )
     }
