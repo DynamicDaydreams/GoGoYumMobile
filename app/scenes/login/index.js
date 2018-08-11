@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ScrollView } from 'react-native';
+import { StyleSheet, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { YumText, YumButton } from '../../components';
 
 
 const styles = StyleSheet.create({
     root: {
-        margin: 30,
+        flex: 1,
+    },
+    rootScrollView: {
+        flex: 1
     },
     root_lockImage: {
         resizeMode: 'contain',
         height: 250,
         width: null,
-        marginTop: 50
+        marginTop: 60
     },
     userName: {
-        marginTop: 50
+        marginTop: 50,
+        marginLeft: 30,
+        marginRight: 30,
     },
     password: {
-        marginTop: 20
+        marginTop: 20,
+        marginLeft: 30,
+        marginRight: 30,
     },
     loginButton: {
         marginTop: 20,
@@ -30,12 +37,14 @@ class LoginScene extends Component {
 
     render() {
         return (
-            <ScrollView style={{ flex: 1, flexDirection: 'column' }} style={styles.root}>
-                <Image source={require('../../../assets/login_lock.png')} style={styles.root_lockImage} />
-                <YumText viewStyle={styles.userName} placeholder={'Username'} />
-                <YumText viewStyle={styles.password} placeholder={'Password'} />
-                <YumButton style={styles.loginButton} buttonText={'Log In'} onClick={() => { }} />
-            </ ScrollView>
+            <KeyboardAvoidingView style={styles.root} behavior={'padding'} enabled>
+                <ScrollView style={styles.rootScrollView}>
+                    <Image source={require('../../../assets/login_lock.png')} style={styles.root_lockImage} />
+                    <YumText viewStyle={styles.userName} placeholder={'Username'} />
+                    <YumText viewStyle={styles.password} placeholder={'Password'} />
+                    <YumButton style={styles.loginButton} buttonText={'Login'} onClick={() => { }} />
+                </ScrollView>
+            </KeyboardAvoidingView>
         )
     }
 }
