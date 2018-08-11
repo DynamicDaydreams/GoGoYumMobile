@@ -1,5 +1,5 @@
 import BaseService from './base';
-import Config from '../Config';
+import Config from '../config';
 
 class AuthService extends BaseService {
     Login = async (userName, password) => {

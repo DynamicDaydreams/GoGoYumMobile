@@ -1,15 +1,27 @@
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage } from 'react-native';
 import Config from '../config';
 
 const AuthenticationManager = {
-    GetToken = async () => {
-        return await AsyncStorage.getItem(Config.localStorageKeys.token);
+    GetToken: async () => {
+        try {
+            return await AsyncStorage.getItem(Config.localStorageKeys.token);
+        } catch (error) {
+            return null;
+        }
     },
-    SetToken = async (token) => {
-        await AsyncStorage.setItem(Config.localStorageKeys.token, token);
+    SetToken: async (token) => {
+        try {
+            await AsyncStorage.setItem(Config.localStorageKeys.token, token);
+        } catch (error) {
+            return null;
+        }
     },
-    ClearToken = async () => {
-        await AsyncStorage.removeItem(Config.localStorageKeys.token);
+    ClearToken: async () => {
+        try {
+            await AsyncStorage.removeItem(Config.localStorageKeys.token);
+        } catch (error) {
+            return null;
+        }
     }
 }
 
