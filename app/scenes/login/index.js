@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, TextInput, StyleSheet, Image, ScrollView } from 'react-native';
-import { StyledImageTextBox } from '../../components';
+import { StyleSheet, Image, ScrollView } from 'react-native';
+import { YumText, YumButton } from '../../components';
 
 
 const styles = StyleSheet.create({
@@ -14,12 +14,15 @@ const styles = StyleSheet.create({
         marginTop: 50
     },
     userName: {
-        flex: 1,
-        paddingTop: 50,
-        alignSelf: 'center'
-    },
-    styledTextField: {
         marginTop: 50
+    },
+    password: {
+        marginTop: 20
+    },
+    loginButton: {
+        marginTop: 20,
+        width: 200,
+        alignSelf: 'center'
     }
 });
 
@@ -29,7 +32,9 @@ class LoginScene extends Component {
         return (
             <ScrollView style={{ flex: 1, flexDirection: 'column' }} style={styles.root}>
                 <Image source={require('../../../assets/login_lock.png')} style={styles.root_lockImage} />
-                <StyledImageTextBox placeholder="username" viewStyle={styles.styledTextField} />
+                <YumText viewStyle={styles.userName} placeholder={'Username'} />
+                <YumText viewStyle={styles.password} placeholder={'Password'} />
+                <YumButton style={styles.loginButton} buttonText={'Log In'} onClick={() => { }} />
             </ ScrollView>
         )
     }
