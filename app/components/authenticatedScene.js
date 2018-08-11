@@ -5,8 +5,6 @@ import { View } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 
 class AuthenticatedScene extends Component {
-
-
     authCheck() {
         var self = this;
         let loginRedirect = StackActions.reset({

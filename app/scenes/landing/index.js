@@ -1,9 +1,7 @@
-// @flow
-
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
-import AuthenticatedScene from '../../components/authenticatedScene';
+import { AuthenticatedScene } from '../../components';
 
 const styles = {
     login: {

@@ -5,14 +5,14 @@ const goGoYum = createStackNavigator({
     Landing: {
         screen: LandingScene,
         navigationOptions: ({ navigation }) => ({
-            title: 'GoGoYum!',
+            header: null,
             headerBackTitle: null
         })
     },
     Login: {
         screen: LoginScene,
         navigationOptions: ({ navigation }) => ({
-            title: 'Log In',
+            header: null,
             headerBackTitle: null
         })
     }
