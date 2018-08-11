@@ -1,6 +1,6 @@
 const Environment = {
     api: {
-        baseUrl: "localhost:5000/api/"
+        baseUrl: "http://localhost:5000/api/"
     },
     localStorageKeys: {
         token: 'GOGOYUM::AUTH_TOKEN'

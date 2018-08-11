@@ -8,6 +8,8 @@ const styles = {
         color: 'blue',
         fontWeight: 'bold',
         fontSize: 30,
+        paddingTop: 80,
+        alignSelf: 'center'
     }
 }
 class LandingScene extends Component {
@@ -18,7 +20,7 @@ class LandingScene extends Component {
     render() {
         return (
             <AuthenticatedScene {...this.props}>
-                <Text style={styles.login}>Landing</Text>
+                <Text style={styles.login}>Landing Page</Text>
             </AuthenticatedScene>
         )
     }

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
+import { NavigationActions, StackActions } from 'react-navigation';
+
 import { YumText, YumButton } from '../../components';
+import { AuthService } from '../../services';
+import { AuthManager } from '../../managers';
 
 
 const styles = StyleSheet.create({
@@ -35,14 +39,62 @@ const styles = StyleSheet.create({
 
 class LoginScene extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            username: 'admin',
+            password: 'P@ssw0rd'
+        }
+    }
+
+    handleLogin() {
+
+        console.log('starting login')
+
+        let landingRedirect = StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'Landing' })
+            ]
+        });
+
+        new AuthService().Login(this.state.username, this.state.password).then(success => {
+            let { access_token } = success;
+            console.log(`We logged in! ${JSON.stringify(access_token)}`)
+            AuthManager.SetToken(access_token).then(save_success => {
+                this.props.navigation.dispatch(landingRedirect);
+            }).catch(save_error => {
+                console.log(`error saving token: ${save_error}`)
+            });
+        }).catch(error => {
+            AuthManager.ClearToken();
+            console.log(`login failed: ${error}`)
+        })
+    }
+
     render() {
+
         return (
             <KeyboardAvoidingView style={styles.root} behavior={'padding'} enabled>
                 <ScrollView style={styles.rootScrollView}>
                     <Image source={require('../../../assets/login_lock.png')} style={styles.root_lockImage} />
-                    <YumText viewStyle={styles.userName} placeholder={'Username'} />
-                    <YumText viewStyle={styles.password} placeholder={'Password'} />
-                    <YumButton style={styles.loginButton} buttonText={'Login'} onClick={() => { }} />
+                    <YumText
+                        viewStyle={styles.userName}
+                        placeholder={'Username'}
+                        onChange={(username) => this.setState({ username })}
+                        value={this.state.username}
+                        textContentType={'username'} />
+
+                    <YumText
+                        viewStyle={styles.password}
+                        placeholder={'Password'}
+                        onChange={(password) => this.setState({ password })}
+                        value={this.state.password}
+                        textContentType={'password'}
+                        secureTextEntry />
+
+                    <YumButton style={styles.loginButton} buttonText={'Login'} onPress={() => { this.handleLogin() }} />
                 </ScrollView>
             </KeyboardAvoidingView>
         )

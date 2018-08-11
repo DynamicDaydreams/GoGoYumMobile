@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AuthenticationManager } from '../managers';
+import { AuthManager } from '../managers';
 import { AuthService } from '../services';
 import { View } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
@@ -13,9 +13,9 @@ class AuthenticatedScene extends Component {
                 NavigationActions.navigate({ routeName: 'Login' })
             ]
         });
-        AuthenticationManager.GetToken().then(function (token) {
+        AuthManager.GetToken().then(function (token) {
             if (token) {
-                AuthService.Validate().then(function (success) {
+                new AuthService().Validate().then(function (validationResults) {
                     if (!validationResults.tokenValid) {
                         if (self.props.navigation) {
                             self.props.navigation.dispatch(loginRedirect);

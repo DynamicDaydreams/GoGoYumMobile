@@ -2,12 +2,12 @@ import axios from 'axios';
 import qs from 'querystring';
 
 import Config from '../config'
-import { AuthenticationManager } from '../managers'
+import { AuthManager } from '../managers'
 
 class ServiceBase {
     GetJson = async (path, baseUrl) => {
         if (!baseUrl) {
-            baseUrl = Config.api.baseUrl;
+            baseUrl = Config().api.baseUrl;
         }
         let url = baseUrl + path;
         let headers = await this.GenerateHeaders();
@@ -23,7 +23,7 @@ class ServiceBase {
 
     PostJson = async (path, data, baseUrl) => {
         if (!baseUrl) {
-            baseUrl = Config.api.baseUrl;
+            baseUrl = Config().api.baseUrl;
         }
         let url = baseUrl + path;
         let headers = await this.GenerateHeaders();
@@ -39,7 +39,7 @@ class ServiceBase {
 
     PostFormData = async (path, data, baseUrl) => {
         if (!baseUrl) {
-            baseUrl = Config.api.baseUrl;
+            baseUrl = Config().api.baseUrl;
         }
         let url = baseUrl + path;
         let headers = await this.GenerateHeaders();
@@ -54,7 +54,7 @@ class ServiceBase {
     }
 
     GenerateHeaders = async (customHeaders) => {
-        let token = await AuthenticationManager.GetToken();
+        let token = await AuthManager.GetToken();
 
         let headers = {};
         if (customHeaders) {
