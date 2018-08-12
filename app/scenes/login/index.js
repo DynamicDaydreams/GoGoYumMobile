@@ -76,6 +76,7 @@ class LoginScene extends Component {
                 console.log(`error saving token: ${save_error}`)
             });
         }).catch(error => {
+            Alert.alert('Login Failed', 'The Username and Password combination could not be found. Please try again.');
             AuthManager.ClearToken();
             console.log(`login failed: ${error}`)
         })
