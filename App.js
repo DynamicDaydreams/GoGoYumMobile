@@ -1,19 +1,23 @@
 import { createStackNavigator } from 'react-navigation';
-import { LoginScene, LandingScene } from './app/scenes';
+import { LoginScene, LandingScene, CreateAccountScene } from './app/scenes';
 
 const goGoYum = createStackNavigator({
     Landing: {
         screen: LandingScene,
-        navigationOptions: ({ navigation }) => ({
-            header: null,
-            headerBackTitle: null
+        navigationOptions: () => ({
+            header: null
         })
     },
     Login: {
         screen: LoginScene,
-        navigationOptions: ({ navigation }) => ({
-            header: null,
-            headerBackTitle: null
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    CreateAccount: {
+        screen: CreateAccountScene,
+        navigationOptions: () => ({
+            header: null
         })
     }
 });

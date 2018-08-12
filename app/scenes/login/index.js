@@ -51,8 +51,8 @@ class LoginScene extends Component {
         super(props);
 
         this.state = {
-            username: 'admin',
-            password: 'P@ssw0rd'
+            username: '',
+            password: ''
         }
     }
 
@@ -81,6 +81,17 @@ class LoginScene extends Component {
         })
     }
 
+    handleCreatePressed() {
+        let createAccountRedirect = StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'CreateAccount' })
+            ]
+        });
+
+        this.props.navigation.dispatch(createAccountRedirect);
+    }
+
     render() {
 
         return (
@@ -103,7 +114,7 @@ class LoginScene extends Component {
                         secureTextEntry />
 
                     <YumButton style={styles.loginButton} buttonText={'Login'} onPress={() => { this.handleLogin() }} />
-                    <YumButton style={styles.newAccountButtonContainer} buttonTextStyle={styles.newAccountButtonText} buttonText={'Create Account'} onPress={() => { this.handleLogin() }} />
+                    <YumButton style={styles.newAccountButtonContainer} buttonTextStyle={styles.newAccountButtonText} buttonText={'Create Account'} onPress={() => { this.handleCreatePressed() }} />
                 </ScrollView>
             </KeyboardAvoidingView>
         )
