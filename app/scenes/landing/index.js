@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
-import { AuthenticatedScene } from '../../components';
+import { AuthenticatedScene, YumButton } from '../../components';
+import { AuthManager } from '../../managers';
 
 const styles = {
     login: {
@@ -21,6 +22,7 @@ class LandingScene extends Component {
         return (
             <AuthenticatedScene {...this.props}>
                 <Text style={styles.login}>Landing Page</Text>
+                <YumButton buttonText={'Log Out'} onPress={() => AuthManager.SignOut(this.props.navigation)} />
             </AuthenticatedScene>
         )
     }

@@ -1,5 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import Config from '../config';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 const AuthManager = {
     GetToken: async () => {
@@ -21,6 +22,20 @@ const AuthManager = {
             await AsyncStorage.removeItem(Config().localStorageKeys.token);
         } catch (error) {
             return null;
+        }
+    },
+    SignOut: async (navigation) => {
+        try {
+            await AsyncStorage.removeItem(Config().localStorageKeys.token);
+            let loginRedirect = StackActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Login' })
+                ]
+            });
+            navigation.dispatch(loginRedirect);
+        } catch (error) {
+            navigation.dispatch(loginRedirect);
         }
     }
 }
