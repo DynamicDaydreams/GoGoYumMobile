@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
     sharedContainerStyle: {
-        alignContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     darkGreenContainer: {
         flex: 1,
