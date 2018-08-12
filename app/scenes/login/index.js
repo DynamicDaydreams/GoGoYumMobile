@@ -34,6 +34,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: 200,
         alignSelf: 'center'
+    },
+    newAccountButtonContainer: {
+        marginTop: 40,
+        alignSelf: 'center',
+        backgroundColor: 'transparent'
+    },
+    newAccountButtonText: {
+        color: '#3863F3'
     }
 });
 
@@ -95,6 +103,7 @@ class LoginScene extends Component {
                         secureTextEntry />
 
                     <YumButton style={styles.loginButton} buttonText={'Login'} onPress={() => { this.handleLogin() }} />
+                    <YumButton style={styles.newAccountButtonContainer} buttonTextStyle={styles.newAccountButtonText} buttonText={'Create Account'} onPress={() => { this.handleLogin() }} />
                 </ScrollView>
             </KeyboardAvoidingView>
         )
