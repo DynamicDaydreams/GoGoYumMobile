@@ -26,11 +26,11 @@ class YumButton extends Component {
 
     render() {
         return (
-            <View style={[styles.container, this.props.style]}>
-                <TouchableOpacity onPress={() => this.props.onPress()}>
+            <TouchableOpacity onPress={() => this.props.onPress()} style={[styles.container, this.props.style]}>
+                <View>
                     <Text style={[styles.buttonText, this.props.buttonTextStyle]}>{this.props.buttonText.toUpperCase()}</Text>
-                </TouchableOpacity>
-            </View>
+                </View>
+            </TouchableOpacity>
         )
     }
 }

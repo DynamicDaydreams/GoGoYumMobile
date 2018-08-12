@@ -3,8 +3,15 @@ import { AuthManager } from '../managers';
 import { AuthService } from '../services';
 import { View } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 
 class AuthenticatedScene extends Component {
+
+    static propTypes = {
+        navigation: PropTypes.any.isRequired,
+        style: PropTypes.any
+    }
+
     authCheck() {
         var self = this;
         let loginRedirect = StackActions.reset({
@@ -39,7 +46,7 @@ class AuthenticatedScene extends Component {
         this.authCheck();
 
         return (
-            <View>
+            <View style={this.props.style}>
                 {this.props.children}
             </View>
         )

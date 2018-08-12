@@ -1,9 +1,9 @@
 import LoginScene from './login';
-import LandingScene from './landing';
+import DashboardScene from './dashboard';
 import CreateAccountScene from './createAccount';
 
 export {
     LoginScene,
-    LandingScene,
+    DashboardScene,
     CreateAccountScene
 }

@@ -60,10 +60,10 @@ class LoginScene extends Component {
 
         console.log('starting login')
 
-        let landingRedirect = StackActions.reset({
+        let dashboardRedirect = StackActions.reset({
             index: 0,
             actions: [
-                NavigationActions.navigate({ routeName: 'Landing' })
+                NavigationActions.navigate({ routeName: 'Dashboard' })
             ]
         });
 
@@ -71,7 +71,7 @@ class LoginScene extends Component {
             let { access_token } = success;
             console.log(`We logged in! ${JSON.stringify(access_token)}`)
             AuthManager.SetToken(access_token).then(save_success => {
-                this.props.navigation.dispatch(landingRedirect);
+                this.props.navigation.dispatch(dashboardRedirect);
             }).catch(save_error => {
                 console.log(`error saving token: ${save_error}`)
             });
