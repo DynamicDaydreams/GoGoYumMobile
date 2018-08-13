@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
+import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert, Text, View } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
+import Expo from 'expo';
 
 import { YumText, YumButton } from '../../components';
 import { AuthService } from '../../services';
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     rootScrollView: {
-        flex: 1
+        flex: 1,
     },
     root_lockImage: {
         resizeMode: 'contain',
@@ -42,6 +43,12 @@ const styles = StyleSheet.create({
     },
     newAccountButtonText: {
         color: '#3863F3'
+    },
+    modeTextContainer: {
+        flex: 0,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingBottom: 40
     }
 });
 
@@ -117,6 +124,9 @@ class LoginScene extends Component {
                     <YumButton style={styles.loginButton} buttonText={'Login'} onPress={() => { this.handleLogin() }} />
                     <YumButton style={styles.newAccountButtonContainer} buttonTextStyle={styles.newAccountButtonText} buttonText={'Create Account'} onPress={() => { this.handleCreatePressed() }} />
                 </ScrollView>
+                <View style={styles.modeTextContainer}>
+                    <Text style={{ fontWeight: 'bold' }}>Application Mode: {Expo.Constants.appOwnership} on {Expo.Constants.isDevice ? 'device' : 'simulator'}</Text>
+                </View>
             </KeyboardAvoidingView>
         )
     }

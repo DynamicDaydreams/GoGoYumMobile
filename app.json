@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "GoGoYumMobile",
-    "description": "This project is really great.",
+    "description": "GoGoYum Mobile App",
     "slug": "GoGoYumMobile",
     "privacy": "unlisted",
     "sdkVersion": "28.0.0",
