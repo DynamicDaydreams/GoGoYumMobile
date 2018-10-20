@@ -1,20 +1,17 @@
 {
   "expo": {
     "name": "GoGoYumMobile",
-    "description": "GoGoYum Mobile App",
+    "description": "This project is really great.",
     "slug": "GoGoYumMobile",
-    "privacy": "unlisted",
-    "sdkVersion": "28.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "privacy": "public",
+    "sdkVersion": "30.0.0",
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
