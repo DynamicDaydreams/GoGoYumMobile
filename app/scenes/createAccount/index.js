@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
+import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert, Text, View, ImageBackground} from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import { YumText, YumButton } from '../../components';
 import { AuthService } from '../../services';
 import { AuthManager } from '../../managers';
+import { black } from 'ansi-colors';
 
 
 const styles = StyleSheet.create({
@@ -12,14 +13,20 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     firstTextField: {
-        marginTop: 80,
+        marginTop: 300,
         marginLeft: 30,
         marginRight: 30,
+        backgroundColor: 'rgba(115,115,115,.5)',
+        borderColor: '#fff',
+        borderBottomWidth: 1,
     },
     textField: {
         marginTop: 20,
         marginLeft: 30,
         marginRight: 30,
+        backgroundColor: 'rgba(115,115,115,.5)',
+        borderColor: '#fff',
+        borderBottomWidth: 1,
     },
     createAccountButton: {
         marginTop: 20,
@@ -27,12 +34,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     cancelCreateButton: {
-        marginTop: 40,
+        marginTop: 30,
+        width: 200,
         alignSelf: 'center',
-        backgroundColor: 'transparent'
+        backgroundColor: 'rgba(117,17,17,.5)',
+        borderColor: '#751112',
+        borderBottomWidth: 2,
+        borderTopWidth: 2,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
     },
     cancelCreateButtonText: {
-        color: '#3863F3'
+        color: '#fff'
     }
 
 });
@@ -79,20 +92,22 @@ class CreateAccountScene extends Component {
 
         return (
             <KeyboardAvoidingView style={styles.root} behavior={'padding'} enabled>
+                <ImageBackground source={require('../../../assets/Background.jpeg')} style={{ width: '100%', height: '100%' }}>
                 <ScrollView style={styles.root}>
                     <YumText
                         viewStyle={styles.firstTextField}
                         placeholder={'Email'}
                         onChange={(email) => this.setState({ email })}
                         value={this.state.email}
-                        textContentType={'emailAddress'} />
-
+                        textContentType={'emailAddress'} 
+                        placeholderTextColor={'#fff'} />
                     <YumText
                         viewStyle={styles.textField}
                         placeholder={'UserName'}
                         onChange={(username) => this.setState({ username })}
                         value={this.state.username}
-                        textContentType={'username'} />
+                        textContentType={'username'}
+                        placeholderTextColor={'#fff'}/>
 
                     <YumText
                         viewStyle={styles.textField}
@@ -100,7 +115,8 @@ class CreateAccountScene extends Component {
                         onChange={(password) => this.setState({ password })}
                         value={this.state.password}
                         textContentType={'password'}
-                        secureTextEntry />
+                        secureTextEntry
+                        placeholderTextColor={'#fff'}/>
 
                     <YumText
                         viewStyle={styles.textField}
@@ -108,12 +124,14 @@ class CreateAccountScene extends Component {
                         onChange={(passwordConfirm) => this.setState({ passwordConfirm })}
                         value={this.state.passwordConfirm}
                         textContentType={'password'}
-                        secureTextEntry />
+                        secureTextEntry
+                        placeholderTextColor={'#fff'}/>
 
                     <YumButton style={styles.createAccountButton} buttonText={'Create Account'} onPress={() => { this.handleCreate() }} />
 
                     <YumButton style={styles.cancelCreateButton} buttonTextStyle={styles.cancelCreateButtonText} buttonText={'Cancel'} onPress={() => { this.handleLoginRedirect() }} />
                 </ScrollView>
+                </ImageBackground>
             </KeyboardAvoidingView>
         )
     }

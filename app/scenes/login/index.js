@@ -28,28 +28,54 @@ const styles = StyleSheet.create({
         marginTop: 50,
         marginLeft: 30,
         marginRight: 30,
-        backgroundColor: 'rgba(116,17,18,.9)',
+        backgroundColor: 'rgba(115,115,115,.5)',
+        borderColor: '#fff',
+        borderBottomWidth: 1,
     },
     password: {
         marginTop: 20,
         marginLeft: 30,
         marginRight: 30,
         marginBottom: 15,
-        backgroundColor: 'rgba(116,17,18,.9)',
+        backgroundColor: 'rgba(115,115,115,.5)',
+        borderColor: '#fff',
+        borderBottomWidth: 1,
+    },
+    password2: {
+        marginTop: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 10,
+        backgroundColor: 'transparent',
+        alignItems: 'center',
     },
     loginButton: {
         marginTop: 10,
         marginRight: 30,
         marginLeft: 30,
+        backgroundColor: 'rgba(251, 172, 24, .75)',
+        borderColor: 'rgba(251,172,24,.5)',
+        borderBottomWidth: 2,
+        borderTopWidth: 2,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
     },
     newAccountButtonContainer: {
-        marginTop: 50,
+        marginTop: 10,
         marginRight: 30,
         marginLeft: 30,
         justifyContent: 'flex-end',
+        borderColor: '#183e5a',
+        borderBottomWidth: 2,
+        borderTopWidth: 2,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
     },
     newAccountButtonText: {
         color: '#fbac18'
+    },
+    newAccountButtonText2: {
+        color: '#fff'
     },
     modeTextContainer: {
         flex: 0,
@@ -57,6 +83,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 40
     }
+   
 });
 
 class LoginScene extends Component {
@@ -133,7 +160,10 @@ class LoginScene extends Component {
                         secureTextEntry />
 
                     <YumButton style={styles.loginButton} buttonText={'Connect with Email'} onPress={() => { this.handleLogin() }} />
-                    <YumButton style={styles.newAccountButtonContainer} buttonText={'Create Account'} onPress={() => { this.handleCreatePressed() }} />
+                    <YumText viewStyle={styles.password2}
+                            placeholder={'OR'}
+                        />
+                    <YumButton style={styles.newAccountButtonContainer} buttonText={'Connect with new Account'} onPress={() => { this.handleCreatePressed() }} />
                 </ScrollView>
                 <View style={styles.modeTextContainer}>
                     <Text style={{ fontWeight: 'bold' }}>Application Mode: {Expo.Constants.appOwnership} on {Expo.Constants.isDevice ? 'device' : 'simulator'}</Text>
