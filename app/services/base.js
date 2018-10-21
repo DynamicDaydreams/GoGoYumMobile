@@ -5,12 +5,9 @@ import Config from '../config'
 import { AuthManager } from '../managers'
 
 class ServiceBase {
-    GetJson = async (path, baseUrl) => {
-        if (!baseUrl) {
-            baseUrl = Config().api.baseUrl;
-        }
-        let url = baseUrl + path;
-        let headers = await this.GenerateHeaders();
+    GetJson = async (path, useRemoteToken) => {
+        let url = Config().api.baseUrl + path;
+        let headers = await this.GenerateHeaders(useRemoteToken);
 
         try {
             let results = (await axios.get(url, { headers })).data;
@@ -21,12 +18,10 @@ class ServiceBase {
         }
     }
 
-    PostJson = async (path, data, baseUrl) => {
-        if (!baseUrl) {
-            baseUrl = Config().api.baseUrl;
-        }
-        let url = baseUrl + path;
-        let headers = await this.GenerateHeaders();
+    PostJson = async (path, data, useRemoteToken) => {
+
+        let url = Config().api.baseUrl + path;
+        let headers = await this.GenerateHeaders(useRemoteToken);
 
         try {
             let results = (await axios.post(url, data, { headers })).data;
@@ -37,24 +32,9 @@ class ServiceBase {
         }
     }
 
-    PostFormData = async (path, data, baseUrl) => {
-        if (!baseUrl) {
-            baseUrl = Config().api.baseUrl;
-        }
-        let url = baseUrl + path;
-        let headers = await this.GenerateHeaders();
+    GenerateHeaders = async (useRemoteToken, customHeaders) => {
 
-        try {
-            let results = (await axios.post(url, qs.stringify(data), { headers })).data;
-            return results;
-        }
-        catch (error) {
-            throw error;
-        }
-    }
-
-    GenerateHeaders = async (customHeaders) => {
-        let token = await AuthManager.GetToken();
+        let token = useRemoteToken ? await AuthManager.GetRemoteToken() : await AuthManager.GetToken();
 
         let headers = {};
         if (customHeaders) {

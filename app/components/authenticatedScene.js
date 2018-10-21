@@ -13,7 +13,7 @@ class AuthenticatedScene extends Component {
     }
 
     authCheck() {
-        var self = this;
+        let self = this;
         let loginRedirect = StackActions.reset({
             index: 0,
             actions: [
@@ -23,7 +23,7 @@ class AuthenticatedScene extends Component {
         AuthManager.GetToken().then(function (token) {
             if (token) {
                 new AuthService().Validate().then(function (validationResults) {
-                    if (!validationResults.tokenValid) {
+                    if (!validationResults.valid) {
                         if (self.props.navigation) {
                             self.props.navigation.dispatch(loginRedirect);
                         }

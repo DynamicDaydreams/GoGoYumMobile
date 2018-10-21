@@ -16,7 +16,8 @@ const Configuration = () => {
 
     return {
         api: {
-            baseUrl: environment.api.baseUrl
+            baseUrl: environment.api.baseUrl,
+            remoteBearer: environment.api.remoteBearer,
         },
         localStorageKeys: {
             token: environment.localStorageKeys.token

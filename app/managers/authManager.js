@@ -10,6 +10,9 @@ const AuthManager = {
             return null;
         }
     },
+    GetRemoteToken: async () => {
+        return Config().api.remoteBearer;
+    },
     SetToken: async (token) => {
         try {
             await AsyncStorage.setItem(Config().localStorageKeys.token, token);

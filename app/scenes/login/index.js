@@ -75,9 +75,9 @@ class LoginScene extends Component {
         });
 
         new AuthService().Login(this.state.username, this.state.password).then(success => {
-            let { access_token } = success;
-            console.log(`We logged in! ${JSON.stringify(access_token)}`)
-            AuthManager.SetToken(access_token).then(save_success => {
+            let { bearerToken } = success;
+            console.log(`We logged in! ${JSON.stringify(bearerToken)}`)
+            AuthManager.SetToken(bearerToken).then(save_success => {
                 this.props.navigation.dispatch(dashboardRedirect);
             }).catch(save_error => {
                 console.log(`error saving token: ${save_error}`)
