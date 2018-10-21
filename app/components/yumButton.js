@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
 
     container: {
         padding: 10,
-        backgroundColor: '#3863F3'
+        backgroundColor: 'rgba(24,62,90,.75)',
+        borderRadius: 3,
     },
     buttonText: {
         fontSize: 18,
         color: '#FFFFFF',
-        fontWeight: 'bold',
         textAlign: 'center'
     }
 })

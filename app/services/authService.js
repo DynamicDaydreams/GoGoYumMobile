@@ -17,7 +17,7 @@ class AuthService extends BaseService {
     }
 
     CreateAccount = async (username, email, password) => {
-        let results = await this.PostJson('user/register', {
+        let results = await this.PostJson('register', {
             userName: username,
             password: password,
             email: email
