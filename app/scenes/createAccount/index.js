@@ -104,7 +104,7 @@ class CreateAccountScene extends Component {
 
                     <YumText
                         viewStyle={styles.textField}
-                        placeholder={'Password'}
+                        placeholder={'Confirm Password'}
                         onChange={(passwordConfirm) => this.setState({ passwordConfirm })}
                         value={this.state.passwordConfirm}
                         textContentType={'password'}
