@@ -31,14 +31,19 @@ const styles = StyleSheet.create({
     createAccountButton: {
         marginTop: 20,
         width: 200,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderColor: '#183e5a',
+        borderBottomWidth: 2,
+        borderTopWidth: 2,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
     },
     cancelCreateButton: {
         marginTop: 30,
         width: 200,
         alignSelf: 'center',
         backgroundColor: 'rgba(117,17,17,.5)',
-        borderColor: '#751112',
+        borderColor: 'rgba(251,172,24,.5)',
         borderBottomWidth: 2,
         borderTopWidth: 2,
         borderLeftWidth: 2,

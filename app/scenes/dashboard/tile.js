@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
     sharedContainerStyle: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: 100,
+        height: 150,
     },
     darkGreenContainer: {
         flex: 1,
-        backgroundColor: '#7d9027'
+       backgroundColor: 'rgba(115,115,115,.5)',
+    },
+    greyContainer: {
+        flex: 1,
+        backgroundColor: 'rgba(115,115,115,.75)',
+        borderColor: 'white',
+        borderWidth: 2,
     },
     darkGreenText: {
         color: '#FFFFFF',
@@ -19,13 +28,13 @@ const styles = StyleSheet.create({
     },
     orangeContainer: {
         flex: 1,
-        backgroundColor: '#ea744c'
+        backgroundColor: 'rgba(251, 172, 24, .50)',
     },
     orangeText: {
-        color: '#FFFFFF',
+        color: 'rgba(251, 172, 24, .50)',
         fontSize: 18,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     yellowContainer: {
         flex: 1,
@@ -97,6 +106,7 @@ class YumButton extends Component {
         onPress: PropTypes.func.isRequired,
         tileStyle: PropTypes.oneOf([
             'darkGreen',
+            'grey',
             'orange',
             'yellow',
             'lightBlue',
@@ -114,7 +124,7 @@ class YumButton extends Component {
 
         return (
             <TouchableOpacity onPress={() => this.props.onPress()} style={[containerStyle, styles.sharedContainerStyle, this.props.style]}>
-                <View style={[containerStyle, styles.sharedContainerStyle, this.props.style]}>
+                <View>
                     <Text style={[textStyle, this.props.textStyle]}>{this.props.text}</Text>
                 </View>
             </TouchableOpacity>

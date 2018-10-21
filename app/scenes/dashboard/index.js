@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 
 import { AuthenticatedScene } from '../../components';
 import { AuthManager } from '../../managers';
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingTop: 50,
         paddingLeft: 5,
-        paddingRight: 5
+        paddingRight: 5,
     },
     row: {
         flex: 1,
@@ -43,23 +43,29 @@ class DashboardScene extends Component {
     render() {
         return (
             <AuthenticatedScene navigation={this.props.navigation} style={styles.root}>
-                <View style={styles.firstRow}>
-                    <Tile text={'Log Out'} tileStyle={'darkGreen'} style={styles.item} onPress={() => { AuthManager.SignOut(this.props.navigation) }} />
-                    <Tile text={'Dashboard Tile'} tileStyle={'orange'} style={styles.item} onPress={() => { }} />
+                
+                <ImageBackground source={require('../../../assets/Background.jpeg')} style={{ width: '100%', height: '100%' }}>
+                <ScrollView style={styles.rootScrollView}>
+                    <View style={styles.firstRow}>
+                    <Tile text={'Log Out'} tileStyle={'grey'} style={styles.item} onPress={() => { AuthManager.SignOut(this.props.navigation) }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                 </View>
                 <View style={styles.row}>
-                    <Tile text={'Dashboard Tile'} tileStyle={'yellow'} style={styles.item} onPress={() => { }} />
-                    <Tile text={'Dashboard Tile'} tileStyle={'lightBlue'} style={styles.item} onPress={() => { }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                 </View>
                 <View style={styles.row}>
-                    <Tile text={'Dashboard Tile'} tileStyle={'gray'} style={styles.item} onPress={() => { }} />
-                    <Tile text={'Dashboard Tile'} tileStyle={'darkBlue'} style={styles.item} onPress={() => { }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                 </View>
                 <View style={styles.row}>
-                    <Tile text={'Dashboard Tile'} tileStyle={'purple'} style={styles.item} onPress={() => { }} />
-                    <Tile text={'Dashboard Tile'} tileStyle={'lightGreen'} style={styles.item} onPress={() => { }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
+                    <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                 </View>
-                <View style={styles.lastRow}></View>
+                    <View style={styles.lastRow}></View>
+                    </ScrollView>
+                    </ImageBackground>
+                
             </AuthenticatedScene>
         )
     }

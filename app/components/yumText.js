@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 15,
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
     },
     container: {
         backgroundColor: 'white',
