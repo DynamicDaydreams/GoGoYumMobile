@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 
     container: {
         padding: 10,
-        backgroundColor: '#3863F3'
+        backgroundColor: '#173d5a'
     },
     buttonText: {
         fontSize: 18,

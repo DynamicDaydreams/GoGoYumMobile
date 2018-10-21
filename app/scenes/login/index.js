@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert, Text, View } from 'react-native';
+import { StyleSheet, Image, ScrollView, KeyboardAvoidingView, Alert, Text, View, ImageBackground} from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 import Expo from 'expo';
 
 import { YumText, YumButton } from '../../components';
 import { AuthService } from '../../services';
 import { AuthManager } from '../../managers';
+import { black } from 'ansi-colors';
 
 
 const styles = StyleSheet.create({
     root: {
         flex: 1,
+        backgroundColor: 'black',
+    },
+    rootScrollView2: {
+        flex: 1, flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
     },
     rootScrollView: {
         flex: 1,
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     newAccountButtonText: {
-        color: '#3863F3'
+        color: '#741012'
     },
     modeTextContainer: {
         flex: 0,
@@ -104,8 +111,11 @@ class LoginScene extends Component {
 
         return (
             <KeyboardAvoidingView style={styles.root} behavior={'padding'} enabled>
-                <ScrollView style={styles.rootScrollView}>
-                    <Image source={require('../../../assets/login_lock.png')} style={styles.root_lockImage} />
+                <ImageBackground source={require('../../../assets/Background.jpeg')} style={{width: '100%', height: '100%'}}>
+               <ScrollView style={styles.rootScrollView}>
+                    <Image source={require('../../../assets/Logo.png')} style={styles.root_lockImage} />
+    
+                    
                     <YumText
                         viewStyle={styles.userName}
                         placeholder={'Username'}
@@ -126,7 +136,8 @@ class LoginScene extends Component {
                 </ScrollView>
                 <View style={styles.modeTextContainer}>
                     <Text style={{ fontWeight: 'bold' }}>Application Mode: {Expo.Constants.appOwnership} on {Expo.Constants.isDevice ? 'device' : 'simulator'}</Text>
-                </View>
+                    </View>
+                </ImageBackground>
             </KeyboardAvoidingView>
         )
     }
