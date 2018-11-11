@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground, ScrollView } from 'react-native';
-import { StackActions } from 'react-navigation';
+
 import { AuthenticatedScene } from '../../components';
 import { AuthManager } from '../../managers';
 
@@ -40,26 +40,6 @@ class DashboardScene extends Component {
         super(props);
     }
 
-    navigateToPrefrences() {
-        const pushAction = StackActions.push({
-            routeName: 'Onboarding',
-            params: {
-            },
-        });
-
-        this.props.navigation.dispatch(pushAction);
-    }
-
-    navigateToCatalog() {
-        const pushAction = StackActions.push({
-            routeName: 'Catalog',
-            params: {
-            },
-        });
-
-        this.props.navigation.dispatch(pushAction);
-    }
-
     render() {
         return (
             <AuthenticatedScene navigation={this.props.navigation} style={styles.root}>
@@ -68,10 +48,10 @@ class DashboardScene extends Component {
                     <ScrollView style={styles.rootScrollView}>
                         <View style={styles.firstRow}>
                             <Tile text={'Log Out'} tileStyle={'grey'} style={styles.item} onPress={() => { AuthManager.SignOut(this.props.navigation) }} />
-                            <Tile text={'Catalog'} tileStyle={'grey'} style={styles.item} onPress={() => { this.navigateToCatalog() }} />
+                            <Tile text={'Cook Book'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                         </View>
                         <View style={styles.row}>
-                            <Tile text={'Preferences'} tileStyle={'grey'} style={styles.item} onPress={() => { this.navigateToPrefrences() }} />
+                            <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                             <Tile text={'Dashboard Tile'} tileStyle={'grey'} style={styles.item} onPress={() => { }} />
                         </View>
                         <View style={styles.row}>

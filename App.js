@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import { LoginScene, DashboardScene, CreateAccountScene } from './app/scenes';
+import { LoginScene, DashboardScene, CreateAccountScene, OnboardingScene, CatalogScene } from './app/scenes';
 
 
 const goGoYum = createStackNavigator({
@@ -20,7 +20,18 @@ const goGoYum = createStackNavigator({
         navigationOptions: () => ({
             header: null
         })
+    },
+    Onboarding: {
+        screen: OnboardingScene,
+        navigationOptions: () => ({
+            header: null
+        }),
+    },
+    Catalog: {
+        screen: CatalogScene,
+        navigationOptions: () => ({
+            header: null
+        })
     }
-});
-
+})
 export default goGoYum;
